@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>D3 typical pattern</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+
+    <script>
+
+        var data = [1,2,3,4,5];
+
+        var scale = d3.scale.linear()
+                .domain([1,5])          //data space
+                .range([0,200]);        //pixel space
+
+        var svg = d3.select("body").append("svg")
+                .attr("width", 250)
+                .attr("height", 250);
+
+        function render(data, color) {
+
+                // Bind data
+                var circles = svg.selectAll("circle").data(data);
+                
+                // Enter
+                circles.enter().append("circle")
+                        .attr("r", 5);
+
+                // Update
+                circles
+                    .attr("cx", function(d) { return d.x; })
+                    .attr("cy", function(d) { return d.y; });
+
+                // Exit
+                circles.exit().remove();
+        }
+
+        var myArrayOfObjects = [
+          { x : 100, y : 100 },  
+          { x : 130, y : 120 },
+          { x :  70, y :  80 },
+          { x : 170, y :  40 }
+        ];
+
+        render(myArrayOfObjects);
+
+
+    </script>
+
+
+    
+</body>
+</html>
