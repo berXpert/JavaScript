@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>D3 example</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+
+    <script>
+
+        var scale = d3.scale.linear();          // Not available in D3 4.10.2  used 3.5.5 as in the sample video
+
+        scale.domain([0,1]);  // Data space
+        scale.range([0,100]);  // Pixel space
+
+        console.log( scale(0));   // Prints 0
+        console.log( scale(0.5)); // prints 50
+        console.log( scale(1));   // prints 100
+
+        
+        var scale2 = d3.scale.linear()
+                .domain([0,2])
+                .range([0,200]);
+
+        console.log(scale2.domain());  // getter
+        console.log(scale2.range());
+
+
+        var scaleOrdinal =  d3.scale.ordinal()
+                .domain(["A", "B", "C"])
+                .range(["Apple", "Banana", "Coconut"]);
+
+        console.log(scaleOrdinal("A"));  // Prints Apple
+
+    </script>
+    
+</body>
+</html>
