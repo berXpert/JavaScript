@@ -36,7 +36,29 @@
 
         console.log(scaleOrdinal("A"));  // Prints Apple
 
+
+        var scaleOrdinalRange =  d3.scale.ordinal()
+                .domain(["A", "B", "C", "D"])
+                .rangePoints([0,100]);
+
+        console.log(scaleOrdinalRange("A"));  // Prints 0
+        console.log(scaleOrdinalRange("B"));  // Prints 33.33
+        console.log(scaleOrdinalRange("C"));  // Prints 66.666
+        console.log(scaleOrdinalRange("D"));  // Prints 100
+
+        var scaleOrdinalRangeRound =  d3.scale.ordinal()
+                .domain(["A", "B", "C", "D"])
+                .rangeRoundPoints([0,100]);
+
+        console.log(scaleOrdinalRangeRound("A"));  // Prints 0
+        console.log(scaleOrdinalRangeRound("B"));  // Prints 33.33
+        console.log(scaleOrdinalRangeRound("C"));  // Prints 66.666
+        console.log(scaleOrdinalRangeRound("D"));  // Prints 100
+
+
     </script>
+
+
     
 </body>
 </html>
